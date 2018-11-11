@@ -1,4 +1,4 @@
-
+# Railsプロジェクトの新規作成
 $ cd dev-kit
 $ docker-compose build
 
@@ -21,4 +21,5 @@ docker ps
 # Rails起動
 $ docker exec -it dev-kit_web_1 bundle exec rails s -b 0.0.0.0
 
+# その他：コマンド
 $ docker-compose down
