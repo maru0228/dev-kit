@@ -9,14 +9,15 @@ $ docker-compose run --rm web bundle exec rails new . --force --database=mysql -
 $ vi config/database.yml
 -> database.ymlをコピーする
 
-# datebase.ymlの設定に従って、データベースを作成する
-$ docker-compose run web bundle exec rake db:create
-
 # コンテナを作成して起動する
 docker-compose up -d
 
+# datebase.ymlの設定に従って、データベースを作成する
+$ docker-compose run web bundle exec rake db:create
+
 # コンテナ起動確認
 docker ps
+
 -> webとdbのプロセス実行されていることを確認
 
 # Rails起動
