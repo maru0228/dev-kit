@@ -1,5 +1,6 @@
 # Railsプロジェクトの新規作成
 $ cd dev-kit
+
 $ docker-compose build
 
 $ docker-compose run --rm web bundle exec rails new . --force --database=mysql --skip-bundle　-d
