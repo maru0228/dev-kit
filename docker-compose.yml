@@ -20,6 +20,8 @@ services:
       - MYSQL_USERNAME=root
       - MYSQL_ROOT_PASSWORD=password
       - TZ=Asia/Tokyo
+    volumes:
+      - datastore
     ports:
       - 3307:3306
   web:
@@ -28,6 +30,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - .:/usr/src/app
+      - datastore
     ports:
       - 3000:3000
     command: /sbin/init
