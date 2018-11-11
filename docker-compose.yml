@@ -1,0 +1,38 @@
+version: "3.6"
+
+volumes:
+  bundle_install:
+    driver: local
+  db:
+    driver: local
+
+services:
+  datastore:
+    image: busybox
+    environment:
+      - TZ=Asia/Tokyo
+    volumes:
+      - bundle_install:/usr/local/bundle
+      - db:/var/lib/mysql
+  db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_USERNAME=root
+      - MYSQL_ROOT_PASSWORD=password
+      - TZ=Asia/Tokyo
+    ports:
+      - 3307:3306
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - 3000:3000
+    command: /sbin/init
+    env_file: .env.dev
+    environment:
+      - TZ=Asia/Tokyo
+    depends_on:
+      - db
